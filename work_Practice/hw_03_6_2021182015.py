@@ -39,13 +39,16 @@ def sort_insert(arr):
     print('-' * 60)
     print(f'before: {arr}')
 
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]  # 현재 주인공
+        j = i - 1  # 현재 주인공의 왼쪽 원소부터 비교 시작
+
         while j >= 0 and key < arr[j]:
-            arr[j + 1] = arr[j]
+            arr[j + 1] = arr[j]  # 주인공을 오른쪽으로 이동
             j -= 1
-        arr[j + 1] = key
+
+        arr[j + 1] = key  # 주인공을 적절한 위치에 삽입
 
     print(f'after : {arr}')
 
