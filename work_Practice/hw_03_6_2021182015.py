@@ -7,19 +7,22 @@ array = [
 ]
 
 def sort_bubble(arr):
-    n = len(arr)
-    
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    
-    print('-' * 60)
-    print(f'before: {arr}')
-    print(f'after : {arr}')
+  print('-' * 60)
+  print(f'before: {arr}')
+
+  count = len(arr)
+  for a in range(count - 1):
+    for b in range(count - 1 - a):
+      if arr[b] > arr[b + 1]:  # 현재 원소가 다음 원소보다 큰 경우
+        arr[b], arr[b + 1] = arr[b + 1], arr[b]  # 위치를 변경
+
+  print(f'after : {arr}')
 
 
 def sort_select(arr):
+    print('-' * 60)
+    print(f'before: {arr}')
+
     n = len(arr)
     
     for i in range(n):
@@ -29,12 +32,13 @@ def sort_select(arr):
                 min_idx = j
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     
-    print('-' * 60)
-    print(f'before: {arr}')
     print(f'after : {arr}')
 
 
 def sort_insert(arr):
+    print('-' * 60)
+    print(f'before: {arr}')
+
     for i in range(1, len(arr)):
         key = arr[i]
         j = i - 1
@@ -43,15 +47,15 @@ def sort_insert(arr):
             j -= 1
         arr[j + 1] = key
 
-    print('-' * 60)
-    print(f'before: {arr}')
     print(f'after : {arr}')
 
 
 def sort_shell(arr):
+    print('-' * 60)
+    print(f'before: {arr}')
     n = len(arr)
-    gap = n // 2
-    
+    gap = n // 2  # 초기 갭 설정
+
     while gap > 0:
         for i in range(gap, n):
             temp = arr[i]
@@ -60,10 +64,8 @@ def sort_shell(arr):
                 arr[j] = arr[j - gap]
                 j -= gap
             arr[j] = temp
-        gap //= 2
-    
-    print('-' * 60)
-    print(f'before: {arr}')
+        gap //= 2  # 갭을 줄여나감
+
     print(f'after : {arr}')
 
 
